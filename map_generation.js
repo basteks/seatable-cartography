@@ -1,14 +1,14 @@
 /*
  title: 'Cartography',
  description: 'A script that allows you to visualize your records on a map',
- author: Benjamin Hatton (https://github.com/basteks/seatable-cartography)
+ author: Benjamin Hatton 
 */
 
 //// Script configuration ////
 // Map URL
 const mapURL = "https://basteks.github.io/basemap.html";
 // Current location : Would you like to display your current location on the map ?
-const curPos = true;
+const curPos = false;
 // Table name
 const tableStr = "Table1";
 // View Name
@@ -18,12 +18,12 @@ const latStr = "Lat";
 // Longitude column name (must be a number-type column !)
 const lonStr = "Lon"
 // Title : the column containing the title of each marker's popup
-const titleStr = "Name";
+const titleStr = "Ville";
 // Grouping : Would you like to group your records by the title field ?
-const group = false;
+const group = true;
 // Popup content : the text to display in the popup for each record (you can use column names between curly brackets, for example {Name})
 // Let this string empty if you don't whant to display anything else than the title
-const popupContent = "{Address}";
+const popupContent = "{Name}";
 
 //// Script run ////
 const table = base.getTableByName(tableStr);
@@ -105,7 +105,7 @@ if (table) {
 
 			for (let record of queryResult) {
 				let dataStr = replaceWithFieldNames(record,popupContent);
-				if (group=="yes") {
+				if (group) {
 					if (record[title.name]!=""){
 						if (find(record[title.name])>=0) {
 							markers[find(record[title.name])].content.push(dataStr);
@@ -136,6 +136,11 @@ if (table) {
 			else {
 				output.markdown("[Clic on this link to see the map]("+mapURL+"?t="+mapTitle+"?mrks="+markersStr+")");
 			}
+			/*let displayMarkers = await input.buttonsAsync("Would you like to display the markers' data?", ['Yes', 'No']);
+			if (displayMarkers == 'Yes') {
+				output.markdown("**List of the markers on the map**:");
+				//output.table(markers);
+			}*/
 			output.markdown("_Script completed successfully_");
             }
 		}
