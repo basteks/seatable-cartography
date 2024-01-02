@@ -7,8 +7,8 @@
 //// Script configuration ////
 // Map URL
 const mapURL = "https://basteks.github.io/basemap.html";
-// Current location : Would you like to display your current location on the map ?
-const curPos = false;
+// Current location : Would you like to display your current location on the map ? The available options are "no", "static" or "track"
+const curPos = "no";
 // Table name
 const tableStr = "Table1";
 // View Name
@@ -18,12 +18,12 @@ const latStr = "Lat";
 // Longitude column name (must be a number-type column !)
 const lonStr = "Lon"
 // Title : the column containing the title of each marker's popup
-const titleStr = "Ville";
+const titleStr = "Name";
 // Grouping : Would you like to group your records by the title field ?
-const group = true;
+const group = false;
 // Popup content : the text to display in the popup for each record (you can use column names between curly brackets, for example {Name})
 // Let this string empty if you don't whant to display anything else than the title
-const popupContent = "{Name}";
+const popupContent = "";
 
 //// Script run ////
 const table = base.getTableByName(tableStr);
@@ -130,17 +130,7 @@ if (table) {
 				}
 				markersStr+= encodeURI(marker["title"]+','+marker["lat"]+","+marker["lon"]+","+listeData)
 			}
-			if (curPos) {
-				output.markdown("[Clic on this link to see the map]("+mapURL+"?t="+mapTitle+"?p=true?mrks="+markersStr+")");
-			}
-			else {
-				output.markdown("[Clic on this link to see the map]("+mapURL+"?t="+mapTitle+"?mrks="+markersStr+")");
-			}
-			/*let displayMarkers = await input.buttonsAsync("Would you like to display the markers' data?", ['Yes', 'No']);
-			if (displayMarkers == 'Yes') {
-				output.markdown("**List of the markers on the map**:");
-				//output.table(markers);
-			}*/
+			output.markdown("[Clic on this link to see the map]("+mapURL+"?t="+mapTitle+"?p="+curPos+"?mrks="+markersStr+")");
 			output.markdown("_Script completed successfully_");
             }
 		}
