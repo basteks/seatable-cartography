@@ -8,7 +8,7 @@ A [Seatable script](https://developer.seatable.io/scripts/) that allows you to v
 
 Then, you will have to set the following information in the upper `//// Script configuration ////` part of the script :
 - *URL* of the basemap.html file
-- *Current location* : a Yes/No option to choose if you want to display your current location on the map
+- *Current location* : Would you like to display your current location on the map ? The available options are "no", "static" (gets current location only once) or "track" (updates the marker each time the current location changes)
 - *Table* : the table containing the records you want to visualize
 - *View* : the view containing the records
 - *Latitude* : the latitude field (**number type**)
