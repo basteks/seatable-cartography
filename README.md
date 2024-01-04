@@ -1,6 +1,6 @@
 # Seatable Cartography
 
-A [Seatable script](https://developer.seatable.io/scripts/) that allows you to visualize your records on a map.
+A [SeaTable script](https://developer.seatable.io/scripts/) that allows you to visualize your records on a map.
 
 ## Usage
 - the basemap.html file needs to be hosted somewhere (you can use [https://basteks.github.io/basemap.html](https://basteks.github.io/basemap.html) for testing purpose only)
